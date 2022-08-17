@@ -23,6 +23,8 @@ export function AuthProvider({ children }: AuthProps) {
     const [token, setToken] = useState<string>(null)
 
     async function verifyToken() {
+        if(token) return true
+        
         let storageToken: string | null = storage.getLocalStorage('token')
         if (!storageToken && !token) return false
 
