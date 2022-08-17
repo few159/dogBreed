@@ -22,17 +22,11 @@ export function AuthProvider({ children }: AuthProps) {
     const storage = new Storage()
     const [token, setToken] = useState<string>(null)
 
-    useEffect(() => {
-        // console.log({ token })
-    }, [token])
-
     async function verifyToken() {
         let storageToken: string | null = storage.getLocalStorage('token')
-        // console.log({ storageToken })
         if (!storageToken && !token) return false
 
         const decodedToken: any = decodeToken(storageToken)
-        // console.log({ decodedToken })
 
         if (new Date(decodedToken.exp * 1000) > new Date()) {
             setToken(storageToken)    
@@ -51,7 +45,6 @@ export function AuthProvider({ children }: AuthProps) {
             let requestBody = { email }
 
             const { data: authResponse } = await httpRequest.post<{ email: string }, AxiosResponse<IRegisterResponse>>('https://dogbreed-api.q9.com.br/register', requestBody)
-            // console.log({ authResponse })
 
             setToken(authResponse.user.token)
 

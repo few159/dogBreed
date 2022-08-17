@@ -3,10 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../hooks/auth'
 import { IGetBreed } from '../../interfaces/breed'
 import { httpRequest } from '../../providers/customAxios/customAxios'
-import Select, { ActionMeta, MultiValue, OnChangeValue } from "react-select"
-import { IoChevronBackOutline, IoChevronForwardOutline } from 'react-icons/io5'
 import styles from './List.module.scss'
-import Pagination from '../../components/pagination/pagination'
 import Catalog from '../../components/catalog/catalog'
 import BreedSelect from '../../components/breedSelect/breedSelect'
 
@@ -32,7 +29,6 @@ export default function List() {
     if (breed) url += '?breed=' + breed
 
     const { data: breedResponse } = await httpRequest.get<IGetBreed>(url, { headers: { 'Authorization': token, 'Access-Control-Allow-Origin': '*' } })
-    console.log({ breedResponse })
 
     setBreed(breedResponse)
   }

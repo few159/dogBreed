@@ -13,7 +13,6 @@ export default function Register() {
 
   useEffect(() => {
     verifyToken().then(isValid => {
-      console.log({isValid})
       if (isValid) {
         nav('/list')
       }
