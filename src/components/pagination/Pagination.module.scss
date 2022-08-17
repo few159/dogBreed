@@ -1,0 +1,15 @@
+.pagination {
+   display: flex;
+   justify-content: center;
+   margin-top: 1rem;
+   color: #896dff;
+   span {
+      padding: .6rem;
+      margin: .2rem;
+      transition: .3s;
+      cursor: pointer;
+      &:hover {
+         filter: brightness(.5);
+      }
+   }
+}

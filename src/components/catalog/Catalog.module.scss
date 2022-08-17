@@ -1,0 +1,63 @@
+.catalog {
+   display: flex;
+   flex-direction: column;
+   width: 100vw;
+   max-height: 90vh;
+   overflow: hidden;
+   h1 {
+      text-align: center;
+      text-shadow: 1px 5px 5px rgb(97 84 153);
+   }
+   .images {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      height: 100vh;
+      padding: 1rem;
+      .image {
+         cursor: pointer;
+         border: 2px solid #896dff;
+         border-radius: 6px;
+         width: 10rem;
+         height: 10rem;
+         margin: .25rem;
+         transition: 300ms;
+         &:hover {
+            transform: scale(1.02);
+            filter: brightness(1.1);
+         }
+         img {
+            width: inherit;
+            height: inherit;
+         }
+      }
+      @media (min-width: 600px) {
+         align-content: center
+      }
+   }
+}
+
+.overlay {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background-color: rgba(0, 0, 0, 0.555);
+   position: fixed;
+   width: 100vw;
+   height: 100vh;
+   left: 0px;
+   top: 0;
+   z-index: 10;
+   cursor: pointer;
+   div {
+      max-width: 90vw;
+      position: relative;
+      z-index: 11;
+      img {
+         width: 100%;
+      }
+   }
+}

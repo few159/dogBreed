@@ -1,0 +1,60 @@
+.background {
+   background: linear-gradient( 200.96deg, #662afe -29.09%, #dd5757 51.77%, #419e2c 129.35%);
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   .card {
+      background: #9ca3afb3;
+      // max-height: 700px;
+      max-width: 400px;
+      width: 80vw;
+      height: fit-content;
+      padding: 3rem 0;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      img {
+         filter: invert(.85);
+      }
+      div {
+         display: flex;
+         flex-direction: column;
+         margin-bottom: 1rem;
+         margin-top: 1.5rem;
+         width: 90%;
+         label {
+            font-weight: 700;
+            // letter-spacing: 1px;
+         }
+         input {
+            margin-top: 0.3rem;
+            height: 2rem;
+            padding: 0 1rem;
+            border-radius: 4px;
+            border: none;
+         }
+      }
+      input {
+         width: 90%;
+         height: 3rem;
+         font-weight: 800;
+         cursor: pointer;
+         border-radius: 6px;
+         border: none;
+         box-shadow: 4px 5px 11px 1px #d9d9d98f;
+      }
+      .checkDiv {
+         flex-direction: row;
+         align-items: center;
+         input {
+            width: 1.5rem;
+            margin: 0 0.5rem;
+            box-shadow: none
+         }
+      }
+   }
+}

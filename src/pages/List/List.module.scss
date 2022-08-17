@@ -1,0 +1,15 @@
+.background {
+   background: linear-gradient(200.96deg, #662afe -29.09%, #d0f3dc 51.77%, #9e2c7e 129.35%);
+   // background: var(--gray-300);
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   // align-items: center;
+}
+
+.select {
+   margin: 0 1rem;
+   color: black
+}
