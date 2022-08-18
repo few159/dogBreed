@@ -5,6 +5,7 @@ import { httpRequest } from '../providers/customAxios/customAxios';
 import { IRegisterResponse } from '../interfaces/login';
 import { Storage } from '../providers/storage';
 import { decodeToken } from "react-jwt";
+import { toast } from 'react-toastify';
 
 interface AuthProps {
     children: ReactNode;
@@ -23,15 +24,15 @@ export function AuthProvider({ children }: AuthProps) {
     const [token, setToken] = useState<string>(null)
 
     async function verifyToken() {
-        if(token) return true
-        
+        if (token) return true
+
         let storageToken: string | null = storage.getLocalStorage('token')
         if (!storageToken && !token) return false
 
         const decodedToken: any = decodeToken(storageToken)
 
         if (new Date(decodedToken.exp * 1000) > new Date()) {
-            setToken(storageToken)    
+            setToken(storageToken)
             return true
         }
 
@@ -55,6 +56,16 @@ export function AuthProvider({ children }: AuthProps) {
             return true
         } catch (error) {
             console.error('Err: ' + error)
+
+            toast.error('Erro ao logar.', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
     }
 

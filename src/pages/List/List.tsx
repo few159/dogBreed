@@ -7,11 +7,15 @@ import styles from './List.module.scss'
 import Catalog from '../../components/catalog/catalog'
 import BreedSelect from '../../components/breedSelect/breedSelect'
 
+import load from '../../assets/images/loading.gif'
+// import load from 'src/assets/images/loading.gif'
+
 export default function List() {
   const nav = useNavigate()
   const { token, verifyToken } = useAuth()
 
   const [breed, setBreed] = useState<IGetBreed>(null)
+  const [showLoad, setShowLoad] = useState<boolean>(false)
 
   useEffect(() => {
     verifyToken().then(async isValid => {
@@ -34,15 +38,17 @@ export default function List() {
   }
 
   async function breedChange(newBreed: { value: string, label: string }) {
+    setShowLoad(true)
     await getBreed(newBreed.value)
+    setShowLoad(false)
   }
 
   return (
     <div className={styles.background}>
       {
-        breed ?
+        breed && !showLoad ?
           <Catalog breed={breed} />
-          : <h1>Wait...</h1>
+          : <img src={load} className={styles.load}></img>
       }
 
       <BreedSelect breedChange={breedChange} />

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import userLogo from '../../assets/images/user.png'
 import { useAuth } from '../../hooks/auth'
 
@@ -17,6 +18,8 @@ export default function Register() {
         nav('/list')
       }
     })
+
+    
   }, [])
 
   return (
@@ -35,9 +38,19 @@ export default function Register() {
         <input type="button"
           value="Cadastro / Login"
           onClick={async (e) => {
-            if(await login(mail, e, keepLogin)){
-              nav('/list')
-            }
+              if(await login(mail, e, keepLogin)){
+                toast.success('Logado!', {
+                  position: "top-right",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  });
+
+                nav('/list')
+              }
           }}
         />
 
